@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 var cookieParser = require('cookie-parser');
 
-app.use(cors());
+app.use(cors({ origin: ['https://example.com', 'https://stackoverflow.com', 'https://shubhamxpatel.github.io', 'http://localhost:3000'], credentials: true }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
@@ -23,6 +23,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  
+}
 
 // -------------------------------------DataBase for the projects-----------------------------------
 // Schema for projects
