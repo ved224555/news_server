@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+console.log(process.env.MONGO_URL)
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1) // trust first proxy
