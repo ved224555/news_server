@@ -80,9 +80,8 @@ const  authenticateUser = async (req , res , next ) => {
     const token = req.cookies.jwtoken;
     const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
-    const rootUser={}// = await Member.findOne({_id: verifyToken._id, "tokens.token" : token});
-    //if(!rootUser){throw new Error('User not found')};
-    console.log("root user query")
+    const rootUser = await Member.findOne({_id: verifyToken._id, "tokens.token" : token});
+    if(!rootUser){throw new Error('User not found')};
 
     req.token = token;
     req.rootUser = rootUser;
