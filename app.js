@@ -170,6 +170,21 @@ catch(err){
 // if(process.env.NODE_ENV === "production"){
 //   app.use(express.static("build"));
 // }
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
 var port = normalizePort(process.env.PORT || '5000');
 app.listen(port,function(req,res){
   console.log("Server started at port 5000")
