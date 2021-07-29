@@ -12,6 +12,10 @@ var app = express();
 const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 var cookieParser = require('cookie-parser');
+var fetch=require('node-fetch')
+var data;
+fetch('https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=c7b2f0f57c364e6f9bed11d164d7f5f1').then(result=>result.text()).then(body=>{data=body})
+
 
 app.use(cors({ origin: ['https://example.com', 'https://stackoverflow.com', 'https://shubhamxpatel.github.io', 'http://localhost:3000'], credentials: true }))
 app.use(express.json());
