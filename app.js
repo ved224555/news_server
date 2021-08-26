@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 var cookieParser = require('cookie-parser');
 
-app.use(cors({ origin: ['https://example.com', 'https://stackoverflow.com', 'https://shubhamxpatel.github.io', 'http://localhost:3000'], credentials: true }))
+app.use(cors({ origin: ['https://example.com', 'https://stackoverflow.com', 'https://ved224555.github.io', 'http://localhost:3000'], credentials: true }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
