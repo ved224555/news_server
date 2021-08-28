@@ -1,26 +1,19 @@
 require('dotenv').config()
-// const bodyParser = require('body-parser');
-// const ejs = require('ejs');
-// const https = require('https');
-// const { verify } = require('crypto');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 var express = require('express');
-var path = require('path');
 var cors = require('cors')
 var app = express();
 const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 var cookieParser = require('cookie-parser');
 
-app.use(cors({ origin: ['https://example.com', 'https://stackoverflow.com', 'https://ved224555.github.io', 'http://localhost:3000'], credentials: true }))
+app.use(cors({ origin: ['https://ved224555.github.io', 'http://localhost:3000'], credentials: true }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(cookieParser()); 
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 console.log(process.env.MONGO_URL)
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 if (app.get('env') === 'production') {
